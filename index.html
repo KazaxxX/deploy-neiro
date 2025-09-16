@@ -1,53 +1,418 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>не СКАМЕРСКИЙ генетический тест</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Портфолио — Кейсы</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #372D26;
+            --accent2: #372D26;
+            --black: #372D26;
+            --white: #fff;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            color: #111;
+            background: #fff;
+        }
+
+        header {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 72px;
+            background: var(--black);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        main {
+            padding-top: 92px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 36px 0;
+            font-size: 30px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Case block */
+        .case {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin: 70px 0;
+            gap: 100px;
+        }
+
+            .case.reverse {
+                flex-direction: row-reverse;
+            }
+
+        /* media */
+        .case-media {
+            width: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--white); /* белая плашка вокруг картинки */
+            border-radius: 3px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.05); /* легкая тень для визуальной отделенности */
+        }
+
+            .case-media img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain; /* показываем картинку целиком */
+                display: block;
+            }
+
+        /* arrows inside block */
+        .media-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 2;
+        }
+
+            .media-arrow.prev {
+                left: 10px;
+            }
+
+            .media-arrow.next {
+                right: 10px;
+            }
+
+        /* content */
+        .case-content {
+            width: 50%;
+            max-width: 520px;
+        }
+
+        .case-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .case-meta {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .label {
+            color: var(--accent2);
+            font-weight: 600;
+        }
+
+        .case-task {
+            margin-top: 12px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* responsive */
+        @media (max-width:960px) {
+            .case, .case.reverse {
+                flex-direction: column;
+                gap: 28px;
+            }
+
+            .case-media, .case-content {
+                width: 100%;
+                max-width: none;
+            }
+
+            .case-media {
+                height: 300px;
+            }
+
+            .case-title {
+                font-size: 22px;
+            }
+
+            .case-meta {
+                font-size: 16px;
+            }
+
+            .case-task {
+                font-size: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-    <h1>не СКАМЕРСКИЙ генетический тест</h1>
-</header>
+    <header>
+        <div class="logo">DEINA</div>
+    </header>
 
-<div class="container">
-    <div class="block">
-        <div class="icon">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="#4cafef" d="M32 2c-7 0-12 4-12 10 0 3 1 5 4 7 4 2 6 4 6 7 0 4-3 7-7 9-4 3-6 6-6 11 0 8 6 14 15 14s15-6 15-14c0-5-2-8-6-11-4-2-7-5-7-9 0-3 2-5 6-7 3-2 4-4 4-7 0-6-5-10-12-10z"/></svg>
+    <main>
+        <div class="container">
+            <section id="cases"></section>
         </div>
-        <h2>Происхождение</h2>
-        <p>50% бог<br>50% татарин</p>
-    </div>
+    </main>
 
-    <div class="block">
-        <div class="icon">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="#4cafef" d="M32 58C18 58 6 46 6 32S18 6 32 6s26 12 26 26-12 26-26 26zm0-40c-8 0-14 6-14 14s6 14 14 14 14-6 14-14-6-14-14-14z"/></svg>
-        </div>
-        <h2>Здоровье</h2>
-        <p>Конское<br>Луковиц нет</p>
-    </div>
+    <script>
+        const cases = [
+            {
+                title: "ЖК Времена года ",
+                budget: "4 млн",
+                time: "5 недель",
+                task: "Квартира для студента, под будущую инвестицию и аренду. Задача создать  легкое и стильное пространство. С возможностью разместить гостей или родителей. Обязательно размещение рабочей зоны для обучения и функциональной кухни.",
+                images: [
+                    "https://i.imgur.com/E7ICJcw.jpeg",
+                    "https://i.imgur.com/Rk588pP.jpeg",
+                    "https://i.imgur.com/PDmaDlF.jpeg",
+                    "https://i.imgur.com/FqRosrO.jpeg",
+                    "https://i.imgur.com/VrbDjRE.jpeg",
+                    "https://i.imgur.com/Mx7ZnQS.jpeg",
+                    "https://i.imgur.com/wsvd5Gg.jpeg",
+                    "https://i.imgur.com/xkr98KA.jpeg",
+                    "https://i.imgur.com/CkyduG3.jpeg",
+                    "https://i.imgur.com/GaBiO1o.jpeg",
+                    "https://i.imgur.com/jxYcWGc.jpeg",
+                    "https://i.imgur.com/pPOe9zm.jpeg",
+                    "https://i.imgur.com/3ocNTvo.jpeg",
+                    "https://i.imgur.com/615HIT0.jpeg"
+                ]
+            },
+            {
+                title: "ЦДС Dreamline ",
+                budget: "1.8 млн",
+                time: "2 месяца",
+                task: "Сделать уютную лаконичную квартиру, с акцентами для личного проживания пары с перспективой дальнейшей продажи. Индивидуальный подход при проектировании мебели, с продуманной системой хранения.  Размещение отдельной прачечной и большой гардеробной за спальной зоной.",
+                images: [
+                    "https://i.imgur.com/HNOGGjI.jpeg",
+                    "https://i.imgur.com/mt335NU.jpeg",
+                    "https://i.imgur.com/He7vWLG.jpeg",
+                    "https://i.imgur.com/aPuXSlP.jpeg",
+                    "https://i.imgur.com/YZI5AwF.jpeg",
+                    "https://i.imgur.com/QB8sSvx.jpeg",
+                    "https://i.imgur.com/6TaMRju.jpeg",
+                    "https://i.imgur.com/qAhm2po.jpeg",
+                    "https://i.imgur.com/y1L2Ouy.jpeg",
+                    "https://i.imgur.com/VJKGk6S.jpeg",
+                    "https://i.imgur.com/lEwcvY3.jpeg",
+                    "https://i.imgur.com/RMGTQDM.jpeg",
+                    "https://i.imgur.com/SiRLWr8.jpeg",
+                    "https://i.imgur.com/IGfVgzT.jpeg",
+                    "https://i.imgur.com/9kscYiK.jpeg",
+                    "https://i.imgur.com/QKgxj15.jpeg",
+                    "https://i.imgur.com/UmnIZQv.jpeg",
+                    "https://i.imgur.com/WbnhHi6.jpeg",
+                    "https://i.imgur.com/kjjDFft.jpeg",
+                    "https://i.imgur.com/JEOT4Ox.jpeg",
+                    "https://i.imgur.com/0O9CKTo.jpeg"
+                ]
+            },
 
-    <div class="block">
-        <div class="icon">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="#4cafef" d="M32 2C20 2 10 12 10 24c0 9 6 17 14 21v13h16V45c8-4 14-12 14-21C54 12 44 2 32 2z"/></svg>
-        </div>
-        <h2>Таланты</h2>
-        <p>Инженерный склад ума<br>Мог бы быть моделью, рекламируя трикотажное нижнее белье</p>
-    </div>
+            {
+                title: "ЖК Береговой",
+                budget: "1.8 млн",
+                time: "2 месяца",
+                task: "Индивидуальный проект, с натуральными и практичными материалами. Теплые оттенки с серым подтоном.  Функциональная кухня, с максимально скрытыми элементами. Хозяйка активно готовит, но любит быстрый доступ ко всем ящикам. ",
+                images: [
+                    "https://i.imgur.com/X6uSDG0.jpeg",
+                    "https://i.imgur.com/HQqfroT.jpeg",
+                    "https://i.imgur.com/OrJR0cJ.jpeg",
+                    "https://i.imgur.com/7wPqCqT.jpeg",
+                    "https://i.imgur.com/690sk6k.jpeg",
+                    "https://i.imgur.com/NVWgTyL.jpeg",
+                    "https://i.imgur.com/690sk6k.jpeg",
+                    "https://i.imgur.com/6LJiAwl.jpeg",
+                    "https://i.imgur.com/Juhg3T3.jpeg",
+                    "https://i.imgur.com/5y0GwlN.jpeg",
+                    "https://i.imgur.com/ZYK5TnM.jpeg",
+                    "https://i.imgur.com/tyMZHh7.jpeg",
+                    "https://i.imgur.com/O4Lp8ki.jpeg",
+                    "https://i.imgur.com/2rjEfkd.jpeg"
+                ]
+            },
 
-    <div class="block bonus" onclick="toggleBonus()">
-        БОНУС (нажми чтобы узнать)
-    </div>
-    <div class="bonus-content" id="bonusText">
-        Ты приёмный
-    </div>
-</div>
+            {
+                title: "Сталинка 1958 г",
+                budget: "1.8 млн",
+                time: "2 месяца",
+                task: "Создать новое пространство, увидеть потенциал квартиры и обустроить ее для семьи из 3-х человек. Семья творческая, любит сочетание оттенков и живые цветы дома. ",
+                images: [
+                    "https://i.imgur.com/VkqQ8b0.jpeg",
+                    "https://i.imgur.com/Z8axo20.jpeg",
+                    "https://i.imgur.com/PX4G4Pw.jpeg",
+                    "https://i.imgur.com/jxStvBz.jpeg",
+                    "https://i.imgur.com/8EfFNcF.jpeg",
+                    "https://i.imgur.com/Bvk2WRX.jpeg",
+                    "https://i.imgur.com/hhtuFXO.jpeg",
+                    "https://i.imgur.com/DG2sSNY.jpeg",
+                    "https://i.imgur.com/REOXBKQ.jpeg",
+                    "https://i.imgur.com/fGtGUkL.jpeg",
+                    "https://i.imgur.com/NFqogHM.jpeg",
+                    "https://i.imgur.com/MAS7n6P.jpeg",
+                    "https://i.imgur.com/KVl9bDV.jpeg",
+                    "https://i.imgur.com/9sBpJPx.jpeg",
+                    "https://i.imgur.com/EGy715w.jpeg",
+                    "https://i.imgur.com/9nMPZai.jpeg"
+                ]
+            },
 
-<footer>
-    © 2025 Авторский тест, без скама :)
-</footer>
+            {
+                title: "ЖК Калина-Парк 2",
+                budget: "1.8 млн",
+                time: "2 месяца",
+                task: "Подготовить квартиру-студию к долгосрочной аренде. Квартира находится в новой развивающейся локации, поэтому важно учитывать вкусы разных поколений. У нас получилась светлая, современная и лаконичная квартира с правильным зонированием всех зон ",
+                images: [
+                    "https://i.imgur.com/BMbCEeE.jpeg",
+                    "https://i.imgur.com/oYhukFH.jpeg",
+                    "https://i.imgur.com/tYo047D.jpeg",
+                    "https://i.imgur.com/B0FJFOl.jpeg",
+                    "https://i.imgur.com/gDagvGF.jpeg",
+                    "https://i.imgur.com/gDagvGF.jpeg",
+                    "https://i.imgur.com/zfViRbu.jpeg",
+                    "https://i.imgur.com/892tjKt.jpeg",
+                    "https://i.imgur.com/HWQM3Z2.jpeg",
+                    "https://i.imgur.com/9D0we5x.jpeg",
+                    "https://i.imgur.com/MPEdag8.jpeg",
+                    "https://i.imgur.com/R4di9jK.jpeg",
+                    "https://i.imgur.com/zZwOxpk.jpeg"
+                ]
+            },
+            {
+                title: "ЖК Московский 65",
+                budget: "1.8 млн",
+                time: "2 месяца",
+                task: "Это квартира, где искусство не просто живёт, а становится частью пространства. Работы хозяина расположены в выбранных местах, словно продолжение интерьера. Мягкая мебель сшита на заказ — каждая деталь отражает индивидуальность владельца. Натуральный камень, дерево и металл образуют сочетание природной силы и современного ритма, подчёркивая характер и глубину.",
+                images: [
+                    "https://i.imgur.com/09IrNdP.jpeg",
+                    "https://i.imgur.com/5IryQZz.jpeg",
+                    "https://i.imgur.com/pd0zqhP.jpeg",
+                    "https://i.imgur.com/F1G8I9D.jpeg",
+                    "https://i.imgur.com/satpI9I.jpeg",
+                    "https://i.imgur.com/8jX1jmq.jpeg",
+                    "https://i.imgur.com/75VhdhJ.jpeg",
+                    "https://i.imgur.com/emJPcL1.jpeg",
+                    "https://i.imgur.com/OSrD8iM.jpeg",
+                    "https://i.imgur.com/qH1m2wD.jpeg"
+                ]
+            },
+            {
+                title: "ЖК Юбилейный квартал",
+                budget: "1.8 млн",
+                time: "2 месяца",
+                task: "2-х комнатная квартира, под сдачу в аренду. В квартире уже готовая отделка, под которую осуществлялся подбор мебели и текстиля. Перед вами удобная гостиная с рабочей зоной",
+                images: [
+                    "https://i.imgur.com/ackpTMg.jpeg",
+                    "https://i.imgur.com/EhFdmS0.jpeg",
+                    "https://i.imgur.com/5RVaVrs.jpeg",
+                    "https://i.imgur.com/H1XZ6De.jpeg",
+                    "https://i.imgur.com/RIuhUWr.jpeg",
+                    "https://i.imgur.com/Hl9GD49.jpeg",
+                    "https://i.imgur.com/8Hor7vZ.jpeg",
+                    "https://i.imgur.com/1e7L2Qh.jpeg"
+                ]
+            }
+        ];
 
-<script src="script.js"></script>
+        const container = document.getElementById('cases');
+        const currentIdx = new Array(cases.length).fill(0);
+
+        function createCaseBlock(data, i) {
+            const art = document.createElement('article');
+            art.className = 'case' + (i % 2 ? ' reverse' : '');
+            art.dataset.case = i;
+
+            const media = document.createElement('div');
+            media.className = 'case-media';
+
+            const img = document.createElement('img');
+            img.src = data.images[0];
+            img.dataset.caseIndex = i;
+
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'media-arrow prev';
+            prevBtn.innerHTML = '&#8249;';
+            prevBtn.addEventListener('click', () => changePhoto(i, -1));
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'media-arrow next';
+            nextBtn.innerHTML = '&#8250;';
+            nextBtn.addEventListener('click', () => changePhoto(i, 1));
+
+            media.appendChild(prevBtn);
+            media.appendChild(img);
+            media.appendChild(nextBtn);
+
+            const content = document.createElement('div');
+            content.className = 'case-content';
+            content.innerHTML = `
+                    <h2 class="case-title">${data.title}</h2>
+                    <p class="case-meta"><span class="label">Задача:</span></p>
+                    <p class="case-task">${data.task}</p>
+                `;
+
+            art.appendChild(media);
+            art.appendChild(content);
+            return art;
+        }
+
+        function renderCases() {
+            cases.forEach((c, i) => container.appendChild(createCaseBlock(c, i)));
+        }
+
+        function changePhoto(i, delta) {
+            const imgs = cases[i].images;
+            currentIdx[i] = (currentIdx[i] + delta + imgs.length) % imgs.length;
+            const imgEl = document.querySelector(`.case[data-case="${i}"] img`);
+            imgEl.src = imgs[currentIdx[i]];
+        }
+
+        renderCases();
+    </script>
 </body>
 </html>
